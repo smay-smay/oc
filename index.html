@@ -263,7 +263,178 @@ input[type=file]{display:none;}
 .url-embed-frame{position:relative;}
 .url-embed-frame iframe{display:block;width:100%;height:360px;border:none;background:#fff;}
 .url-embed-blocker{display:none;position:absolute;inset:0;background:rgba(15,14,23,.9);flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:12px;color:var(--t2);text-align:center;padding:16px;}
+
+/* ═══════════════════════════════════════
+   MOBILE RESPONSIVE
+═══════════════════════════════════════ */
+/* 공통 터치 개선 */
+@media (hover:none){
+  .ov,.ic-acts,.img-actions,.drag-handle-ic{opacity:1!important;display:flex!important;}
+  .t1-slot .ov{opacity:1;}
+}
+
+/* 태블릿 (≤900px) */
+@media(max-width:900px){
+  :root{--sidebar:180px;}
+  .ctab{padding:10px 11px;font-size:11px;}
+}
+
+/* 모바일 (≤640px) */
+@media(max-width:640px){
+  /* 헤더 */
+  header{padding:8px 12px;gap:8px;flex-wrap:wrap;}
+  .logo em{display:none;}
+  .hact{gap:5px;flex-wrap:wrap;}
+  .btn{padding:6px 10px;font-size:11px;}
+  .btn svg{width:13px;height:13px;}
+
+  /* 사이드바 → 하단 드로어로 전환 */
+  .shell{flex-direction:column;}
+  .sidebar{
+    width:100%!important;
+    height:auto;
+    flex-shrink:0;
+    border-right:none;
+    border-bottom:1px solid var(--bd);
+    flex-direction:row;
+    overflow:hidden;
+  }
+  .sb-head{
+    padding:8px 12px;
+    border-bottom:none;
+    border-right:1px solid var(--bd);
+    flex-shrink:0;
+    flex-direction:column;
+    gap:4px;
+    justify-content:center;
+  }
+  .sb-body{
+    display:flex;
+    flex-direction:row;
+    gap:4px;
+    padding:6px 8px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    flex:1;
+    align-items:center;
+  }
+  /* 캐릭터 아이템 → 가로 스크롤 카드 */
+  .folder{display:contents;}
+  .folder-head{display:none;}
+  .folder-body{display:contents!important;padding:0;}
+  .folder-drop{display:none;}
+  .char-item{
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    padding:6px 8px;
+    min-width:60px;
+    flex-shrink:0;
+    margin-bottom:0;
+    text-align:center;
+  }
+  .dh{display:none;}
+  .char-thumb{width:40px;height:40px;}
+  .char-meta{display:flex;flex-direction:column;align-items:center;}
+  .cname{font-size:10px;}
+  .ctag{display:none;}
+
+  /* 콘텐츠 영역 */
+  .content{flex:1;overflow:hidden;}
+  .view-bar{padding:0 10px;}
+  .vtab{padding:10px 12px;font-size:11px;}
+
+  /* 에디터 탭바 */
+  .ctabs-bar{padding:0 2px;overflow-x:auto;gap:0;}
+  .ctab{padding:10px 10px;font-size:11px;white-space:nowrap;}
+  #btnDel{padding:5px 8px;font-size:10px;}
+
+  /* TAB 1: 세로 스택 */
+  .t1-wrap{flex-direction:column;}
+  .t1-left{
+    width:100%!important;
+    flex-direction:row;
+    overflow-x:auto;
+    overflow-y:hidden;
+    border-right:none;
+    border-bottom:1px solid var(--bd);
+    padding:10px;
+    gap:8px;
+    flex-shrink:0;
+    max-height:180px;
+  }
+  .t1-left .t1-slot{
+    flex-shrink:0;
+    width:100px;
+  }
+  .t1-right{padding:12px;}
+
+  /* 정보 카드 1열 */
+  .info-cards{grid-template-columns:1fr;}
+  .info-name-row{flex-direction:column;gap:6px;}
+  .tag-inp{width:100%;}
+
+  /* TAB 2 */
+  .t2-wrap{padding:12px;}
+
+  /* TAB 3 */
+  .t3-wrap{padding:10px;}
+  .img-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:7px;}
+
+  /* TAB 4 */
+  .t4-wrap{padding:10px;}
+  .rel-add-row{flex-direction:column;gap:6px;}
+  .rel-add-row .btn{width:100%;justify-content:center;}
+
+  /* 갤러리 */
+  .gal-view{padding:12px;}
+  .gal-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;}
+
+  /* 모달 */
+  .modal{width:calc(100vw - 32px);padding:18px;}
+
+  /* 이미지 그룹 */
+  .extra-toolbar{flex-wrap:wrap;gap:6px;}
+}
+
+/* 아주 작은 화면 (≤380px) */
+@media(max-width:380px){
+  .t1-left{max-height:150px;}
+  .t1-left .t1-slot{width:80px;}
+  .img-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));}
+  .gal-grid{grid-template-columns:repeat(2,1fr);}
+  .ctab{padding:9px 8px;font-size:10px;}
+}
+
+
+/* 이미지 그룹 */
+.extra-toolbar{display:flex;align-items:center;justify-content:space-between;margin:14px 0 6px;}
+.img-group{margin-bottom:14px;}
+.img-group-head{display:flex;align-items:center;gap:7px;padding:6px 8px;background:var(--panel);border-radius:var(--r3);margin-bottom:7px;border:1px solid var(--bd);}
+.img-group-arrow{font-size:10px;color:var(--t3);cursor:pointer;flex-shrink:0;user-select:none;width:14px;}
+.img-group-name-inp{background:transparent;border:none;font-size:12px;font-weight:600;color:var(--t2);font-family:inherit;flex:1;min-width:0;}
+.img-group-name-inp:focus{outline:none;color:var(--a1);}
+.img-group-count{font-size:10px;color:var(--t3);flex-shrink:0;}
+.img-group-body{padding-left:4px;}
+
+
+/* ── CLOUD UI ── */
+.hact-divider{width:1px;height:22px;background:var(--bd2);margin:0 2px;flex-shrink:0;}
+.cloud-btn{border-color:rgba(142,212,247,.3);color:var(--a3);}
+.cloud-btn:hover{background:rgba(142,212,247,.08);border-color:var(--a3);box-shadow:0 0 16px rgba(142,212,247,.15);}
+.cloud-save-item{background:var(--panel);border:1px solid var(--bd);border-radius:var(--r2);padding:11px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s;}
+.cloud-save-item:hover{border-color:var(--a1);box-shadow:var(--glow);}
+.cloud-save-meta{flex:1;min-width:0;}
+.cloud-save-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cloud-save-date{font-size:11px;color:var(--t3);margin-top:2px;}
+.cloud-save-count{font-size:11px;color:var(--t2);}
+.cloud-del-btn{color:var(--t3);background:transparent;border:none;cursor:pointer;padding:4px;border-radius:4px;display:flex;align-items:center;}
+.cloud-del-btn:hover{color:#f7748a;}
+.cloud-del-btn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
 </style>
+<!-- Supabase JS (cloud sync 기능용, 없어도 로컬 동작 정상) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 </head>
 <body>
 
@@ -283,6 +454,24 @@ input[type=file]{display:none;}
     <button class="btn pri" id="btnExport">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>JSON 저장
     </button>
+    <!-- 클라우드 영역 (로그인 시에만 활성) -->
+    <div class="hact-divider"></div>
+    <button class="btn cloud-btn" id="btnCloudLogin" title="Google 로그인으로 클라우드 저장 사용">
+      <svg viewBox="0 0 24 24"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><polyline points="16 21 12 17 8 21"/><line x1="12" y1="17" x2="12" y2="11"/></svg>클라우드
+    </button>
+    <div id="cloudUserArea" style="display:none;align-items:center;gap:6px">
+      <img id="cloudAvatar" src="" alt="" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--bd2)">
+      <span id="cloudUserName" style="font-size:11px;color:var(--t2);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+      <button class="btn sm" id="btnCloudSave" title="클라우드에 저장">
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>저장
+      </button>
+      <button class="btn sm" id="btnCloudLoad" title="클라우드에서 불러오기">
+        <svg viewBox="0 0 24 24"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><polyline points="8 17 12 21 16 17"/><line x1="12" y1="21" x2="12" y2="11"/></svg>불러오기
+      </button>
+      <button class="btn sm" id="btnCloudLogout" title="로그아웃">
+        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -360,6 +549,32 @@ input[type=file]{display:none;}
   </div>
 </div>
 
+<!-- MODAL: 이미지 그룹 추가 -->
+<div class="mo" id="moGroup">
+  <div class="modal">
+    <h2>이미지 그룹 추가</h2>
+    <div class="fg"><label class="fl">그룹 이름 *</label><input class="fi" id="groupNameInp" placeholder="예: 일러스트, 팬아트, 표정집"></div>
+    <div class="mact">
+      <button class="btn" id="groupCancel">취소</button>
+      <button class="btn pri" id="groupConfirm">추가</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: 클라우드 불러오기 -->
+<div class="mo" id="moCloudLoad">
+  <div class="modal" style="width:480px">
+    <h2>☁ 클라우드 저장 목록</h2>
+    <p style="font-size:12px;color:var(--t2);margin-bottom:14px">최근 저장된 파일 3개를 불러올 수 있습니다. 불러오면 현재 데이터와 병합됩니다.</p>
+    <div id="cloudSaveList" style="display:flex;flex-direction:column;gap:8px;min-height:60px">
+      <div style="color:var(--t3);font-size:12px;text-align:center;padding:20px">로딩 중...</div>
+    </div>
+    <div class="mact">
+      <button class="btn" id="cloudLoadCancel">닫기</button>
+    </div>
+  </div>
+</div>
+
 <!-- LIGHTBOX -->
 <div class="lb" id="lb"><span class="lb-x" id="lbX">✕</span><img id="lbImg" src="" alt=""></div>
 
@@ -370,6 +585,182 @@ input[type=file]{display:none;}
 <div class="toast" id="toast"></div>
 
 <script>
+// ═══════════════════════════════════════════
+// ☁ CLOUD SYNC (Supabase) — 기존 기능에 영향 없음
+// ★ 아래 두 값을 본인 Supabase 프로젝트 값으로 교체하세요
+// ═══════════════════════════════════════════
+const SUPA_URL  = 'https://YOUR_PROJECT.supabase.co';   // ← 교체
+const SUPA_ANON = 'YOUR_ANON_KEY';                       // ← 교체
+const MAX_CLOUD_SAVES = 3;
+
+let supa = null;       // Supabase client (로드 실패 시 null)
+let cloudUser = null;  // 현재 로그인 유저
+
+// Supabase 초기화 (라이브러리 로드 성공 시에만)
+function initSupabase() {
+  try {
+    if (typeof window.supabase === 'undefined') return;
+    supa = window.supabase.createClient(SUPA_URL, SUPA_ANON);
+    // 인증 상태 감지
+    supa.auth.onAuthStateChange((event, session) => {
+      cloudUser = session?.user || null;
+      updateCloudUI();
+      if (event === 'SIGNED_IN') showToast('✦ 로그인 되었습니다','ok');
+      if (event === 'SIGNED_OUT') showToast('로그아웃 되었습니다');
+    });
+    // 현재 세션 복원
+    supa.auth.getSession().then(({data:{session}}) => {
+      cloudUser = session?.user || null;
+      updateCloudUI();
+    });
+  } catch(e) {
+    console.warn('Supabase init failed:', e);
+    supa = null;
+  }
+}
+
+function updateCloudUI() {
+  const loginBtn  = document.getElementById('btnCloudLogin');
+  const userArea  = document.getElementById('cloudUserArea');
+  const avatar    = document.getElementById('cloudAvatar');
+  const nameEl    = document.getElementById('cloudUserName');
+  if (!loginBtn || !userArea) return;
+
+  if (cloudUser) {
+    loginBtn.style.display = 'none';
+    userArea.style.display = 'flex';
+    const meta = cloudUser.user_metadata || {};
+    avatar.src   = meta.avatar_url || '';
+    avatar.style.display = meta.avatar_url ? '' : 'none';
+    nameEl.textContent = meta.full_name || meta.name || cloudUser.email || '';
+  } else {
+    loginBtn.style.display = '';
+    userArea.style.display = 'none';
+  }
+}
+
+async function cloudLogin() {
+  if (!supa) { showToast('Supabase 설정이 필요합니다 (SUPA_URL / SUPA_ANON 교체)','err'); return; }
+  const { error } = await supa.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: location.href }
+  });
+  if (error) showToast('로그인 실패: ' + error.message, 'err');
+}
+
+async function cloudLogout() {
+  if (!supa) return;
+  await supa.auth.signOut();
+}
+
+async function cloudSave() {
+  if (!supa || !cloudUser) { showToast('먼저 로그인하세요','err'); return; }
+  if (!chars.length) { showToast('저장할 캐릭터가 없습니다','err'); return; }
+
+  const saveName = `저장 ${new Date().toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}`;
+
+  // 현재 저장 개수 확인 → MAX 초과 시 가장 오래된 것 삭제
+  const { data: existing } = await supa
+    .from('saves')
+    .select('id, saved_at')
+    .eq('user_id', cloudUser.id)
+    .order('saved_at', { ascending: true });
+
+  if (existing && existing.length >= MAX_CLOUD_SAVES) {
+    const toDelete = existing.slice(0, existing.length - MAX_CLOUD_SAVES + 1);
+    await supa.from('saves').delete().in('id', toDelete.map(r=>r.id));
+  }
+
+  const payload = { version:4, chars, folders };
+  const { error } = await supa.from('saves').insert({
+    user_id: cloudUser.id,
+    name: saveName,
+    data: payload
+  });
+
+  if (error) { showToast('저장 실패: ' + error.message,'err'); return; }
+  showToast('☁ 클라우드 저장 완료 ✦','ok');
+}
+
+async function openCloudLoad() {
+  if (!supa || !cloudUser) { showToast('먼저 로그인하세요','err'); return; }
+  document.getElementById('moCloudLoad').classList.add('open');
+  renderCloudSaveList();
+}
+
+async function renderCloudSaveList() {
+  const listEl = document.getElementById('cloudSaveList');
+  listEl.innerHTML = '<div style="color:var(--t3);font-size:12px;text-align:center;padding:20px">로딩 중...</div>';
+
+  const { data, error } = await supa
+    .from('saves')
+    .select('id, name, saved_at, data')
+    .eq('user_id', cloudUser.id)
+    .order('saved_at', { ascending: false })
+    .limit(MAX_CLOUD_SAVES);
+
+  if (error) { listEl.innerHTML = `<div style="color:#f7748a;font-size:12px;text-align:center;padding:20px">불러오기 실패: ${error.message}</div>`; return; }
+  if (!data || !data.length) { listEl.innerHTML = '<div style="color:var(--t3);font-size:12px;text-align:center;padding:20px">저장된 데이터가 없습니다</div>'; return; }
+
+  listEl.innerHTML = data.map(row => {
+    const d = row.data || {};
+    const charCount = (d.chars || d.characters || []).length;
+    const dateStr = new Date(row.saved_at).toLocaleString('ko-KR');
+    return `<div class="cloud-save-item" data-sid="${row.id}">
+      <div class="cloud-save-meta">
+        <div class="cloud-save-name">${esc(row.name)}</div>
+        <div class="cloud-save-date">${dateStr}</div>
+      </div>
+      <span class="cloud-save-count">캐릭터 ${charCount}명</span>
+      <button class="cloud-del-btn" data-del="${row.id}" title="이 저장 삭제">
+        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+      </button>
+    </div>`;
+  }).join('');
+
+  // 클릭으로 불러오기
+  listEl.querySelectorAll('.cloud-save-item').forEach(item => {
+    item.addEventListener('click', async e => {
+      if (e.target.closest('.cloud-del-btn')) return;
+      const row = data.find(r => r.id === item.dataset.sid);
+      if (!row) return;
+      if (!confirm(`"${row.name}" 을 불러올까요?
+현재 데이터와 병합됩니다.`)) return;
+      mergeCloudData(row.data);
+      document.getElementById('moCloudLoad').classList.remove('open');
+    });
+  });
+
+  // 삭제
+  listEl.querySelectorAll('.cloud-del-btn').forEach(btn => {
+    btn.addEventListener('click', async e => {
+      e.stopPropagation();
+      if (!confirm('이 저장을 삭제하시겠습니까?')) return;
+      const { error } = await supa.from('saves').delete().eq('id', btn.dataset.del);
+      if (error) { showToast('삭제 실패','err'); return; }
+      renderCloudSaveList();
+      showToast('삭제됨');
+    });
+  });
+}
+
+function mergeCloudData(d) {
+  const list = d.chars || d.characters || (Array.isArray(d) ? d : []);
+  const flist = d.folders || [];
+  list.forEach(c => {
+    if (!c.id) c.id = uid();
+    if (!c.relations)  c.relations  = [];
+    if (!c.extraImgs)  c.extraImgs  = [];
+    if (!c.folderId)   c.folderId   = '';
+    const idx = chars.findIndex(x => x.id === c.id);
+    if (idx >= 0) chars[idx] = c; else chars.push(c);
+  });
+  flist.forEach(f => { if (!folders.find(x => x.id === f.id)) folders.push(f); });
+  if (chars.length && !activeId) activeId = chars[0].id;
+  renderAll(); saveAll();
+  showToast(`☁ ${list.length}개 캐릭터 병합 완료 ✦`,'ok');
+}
+
 // ═══════════════════════════════════════════
 // CONFIG
 // ═══════════════════════════════════════════
@@ -413,7 +804,7 @@ const SF=[
 // STATE
 // ═══════════════════════════════════════════
 let chars=[], folders=[], activeId=null, curView='editor', curTab='t1';
-let pendingKey=null, pendingRelImg=false;
+let pendingKey=null, pendingRelImg=false, pendingGroup='';
 let icDragSrc=null, sbDragId=null;
 let relAddTab='registered'; // 'registered' | 'external'
 
@@ -738,6 +1129,8 @@ function renderT2(ch){
 // ── TAB 3 ──
 function renderT3(ch){
   const el=document.getElementById('t3C');
+
+  // 기본 이미지 슬롯
   let html=`<div class="img-sec-lbl">기본 이미지</div><div class="img-grid">`;
   T3_SLOTS.forEach(s=>{
     const src=ch[s.key];
@@ -761,27 +1154,61 @@ function renderT3(ch){
   });
   html+=`</div>`;
 
-  // extra images (draggable)
-  html+=`<div class="img-sec-lbl">추가 이미지 (${ch.extraImgs.length})</div><div class="img-grid" id="extraGrid">`;
-  ch.extraImgs.forEach((ex,i)=>{
-    html+=`<div class="ic ic-portrait" data-ei="${i}" draggable="true">
-      <img src="${ex.src}" alt="${esc(ex.label)}" loading="lazy">
-      <div class="drag-handle-ic"><svg viewBox="0 0 10 16" fill="currentColor"><circle cx="3" cy="2" r="1.1"/><circle cx="7" cy="2" r="1.1"/><circle cx="3" cy="8" r="1.1"/><circle cx="7" cy="8" r="1.1"/><circle cx="3" cy="14" r="1.1"/><circle cx="7" cy="14" r="1.1"/></svg></div>
-      <div class="ic-lbl-wrap"><input class="ic-lbl-edit" data-ei="${i}" value="${ea(ex.label||'추가'+(i+1))}"></div>
-      <div class="ic-acts">
-        <button class="iab" data-act="lb-e"  data-ei="${i}"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
-        <button class="iab" data-act="dl-e"  data-ei="${i}"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
-        <button class="iab" data-act="del-e" data-ei="${i}"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
-      </div>
-    </div>`;
+  // ── 추가 이미지 (그룹별) ──
+  // 그룹 목록 수집 (순서 유지)
+  const groups=[];
+  ch.extraImgs.forEach(ex=>{
+    const g=ex.group||'';
+    if(!groups.includes(g))groups.push(g);
   });
-  html+=`<div class="add-ic" id="addExtraBtn">
-    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    <span>추가 (여러 장 가능)</span>
-  </div></div>`;
+  if(!groups.includes(''))groups.push(''); // 기본 그룹 항상 표시
+
+  html+=`<div class="extra-toolbar">
+    <span class="img-sec-lbl" style="margin:0">추가 이미지 (${ch.extraImgs.length})</span>
+    <button class="btn sm" id="btnAddGroup">
+      <svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+      그룹 추가
+    </button>
+  </div>`;
+
+  groups.forEach(g=>{
+    const groupImgs=ch.extraImgs.map((ex,i)=>({ex,i})).filter(({ex})=>(ex.group||'')=== g);
+    const gLabel=g||'기본';
+    const gId='grp_'+g.replace(/[^a-zA-Z0-9가-힣]/g,'_');
+    html+=`<div class="img-group" data-g="${ea(g)}">
+      <div class="img-group-head">
+        <span class="img-group-arrow" data-gid="${gId}">▶</span>
+        <input class="img-group-name-inp" data-g="${ea(g)}" value="${ea(gLabel)}" ${g===''?'placeholder="기본" style="color:var(--t3)"':''}>
+        <span class="img-group-count">${groupImgs.length}</span>
+        ${g!==''?`<button class="ibtn del-group-btn" data-g="${ea(g)}" title="그룹 삭제"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`:''}
+      </div>
+      <div class="img-group-body" id="${gId}">
+        <div class="img-grid">`;
+    groupImgs.forEach(({ex,i})=>{
+      html+=`<div class="ic ic-portrait" data-ei="${i}" draggable="true">
+        <img src="${ex.src}" alt="${esc(ex.label)}" loading="lazy">
+        <div class="drag-handle-ic"><svg viewBox="0 0 10 16" fill="currentColor"><circle cx="3" cy="2" r="1.1"/><circle cx="7" cy="2" r="1.1"/><circle cx="3" cy="8" r="1.1"/><circle cx="7" cy="8" r="1.1"/><circle cx="3" cy="14" r="1.1"/><circle cx="7" cy="14" r="1.1"/></svg></div>
+        <div class="ic-lbl-wrap"><input class="ic-lbl-edit" data-ei="${i}" value="${ea(ex.label||'')}"></div>
+        <div class="ic-acts">
+          <button class="iab" data-act="lb-e"  data-ei="${i}"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></button>
+          <button class="iab" data-act="dl-e"  data-ei="${i}"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+          <button class="iab" data-act="del-e" data-ei="${i}"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+        </div>
+      </div>`;
+    });
+    // 해당 그룹에 이미지 추가 버튼
+    html+=`<div class="add-ic add-to-group" data-addg="${ea(g)}">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>추가</span>
+      </div>
+      </div><!-- img-grid -->
+      </div><!-- img-group-body -->
+    </div><!-- img-group -->`;
+  });
+
   el.innerHTML=html;
 
-  // base slot events (빈 슬롯: 여러 장 선택 가능, 첫장→슬롯, 나머지→extra)
+  // 기본 슬롯 이벤트
   el.querySelectorAll('.empty-ic[data-key]').forEach(c=>{
     c.addEventListener('click',()=>triggerUploadSlot(c.dataset.key));
     setupDrop(c,c.dataset.key);
@@ -795,17 +1222,16 @@ function renderT3(ch){
     card.addEventListener('click',e=>{if(!e.target.closest('.ic-acts')&&!e.target.closest('.drag-handle-ic')&&!e.target.closest('.ic-lbl-edit'))openLB(ch[key]);});
   });
 
-  // extra events
+  // extra 이미지 이벤트
   el.querySelectorAll('.ic[data-ei]').forEach(card=>{
     const i=+card.dataset.ei;
     card.querySelector('[data-act="lb-e"]')?.addEventListener('click',e=>{e.stopPropagation();openLB(ch.extraImgs[i].src);});
     card.querySelector('[data-act="dl-e"]')?.addEventListener('click',e=>{e.stopPropagation();dlImg(ch.extraImgs[i].src,ch.name+'_extra'+(i+1));});
     card.querySelector('[data-act="del-e"]')?.addEventListener('click',e=>{e.stopPropagation();if(!confirm('이미지를 삭제하시겠습니까?'))return;ch.extraImgs.splice(i,1);renderT3(ch);saveAll();});
     card.addEventListener('click',e=>{if(!e.target.closest('.ic-acts')&&!e.target.closest('.drag-handle-ic')&&!e.target.closest('.ic-lbl-edit'))openLB(ch.extraImgs[i].src);});
-    // label edit
     card.querySelector('.ic-lbl-edit')?.addEventListener('change',ev=>{ch.extraImgs[i].label=ev.target.value;saveAll();});
-    // drag to reorder extra
-    card.addEventListener('dragstart',e=>{icDragSrc=i;card.classList.add('ic-dragging');e.dataTransfer.effectAllowed='move';});
+    // drag to reorder within group
+    card.addEventListener('dragstart',e=>{icDragSrc=i;card.classList.add('ic-dragging');e.dataTransfer.setData('ei',String(i));e.dataTransfer.effectAllowed='move';});
     card.addEventListener('dragover',e=>{e.preventDefault();card.classList.add('ic-drag-over');});
     card.addEventListener('dragleave',()=>card.classList.remove('ic-drag-over'));
     card.addEventListener('drop',e=>{
@@ -817,10 +1243,54 @@ function renderT3(ch){
     card.addEventListener('dragend',()=>{card.classList.remove('ic-dragging');el.querySelectorAll('.ic[data-ei]').forEach(x=>x.classList.remove('ic-drag-over'));icDragSrc=null;});
   });
 
-  // add extra
-  document.getElementById('addExtraBtn')?.addEventListener('click',()=>triggerUpload('__extra__'));
-  setupDrop(document.getElementById('addExtraBtn'),'__extra__');
+  // 그룹별 추가 버튼
+  el.querySelectorAll('.add-to-group').forEach(btn=>{
+    const g=btn.dataset.addg;
+    btn.addEventListener('click',()=>{pendingGroup=g;triggerUpload('__extra__');});
+    setupDropGroup(btn,g);
+  });
+
+  // 그룹 추가 버튼
+  document.getElementById('btnAddGroup')?.addEventListener('click',()=>{
+    document.getElementById('moGroup').classList.add('open');
+    document.getElementById('groupNameInp').value='';
+    setTimeout(()=>document.getElementById('groupNameInp').focus(),80);
+  });
+
+  // 그룹 이름 수정 (기본 그룹 제외)
+  el.querySelectorAll('.img-group-name-inp').forEach(inp=>{
+    const oldG=inp.dataset.g;
+    if(oldG==='')return; // 기본 그룹은 이름 변경 불가
+    inp.addEventListener('change',()=>{
+      const newG=inp.value.trim();
+      if(!newG)return;
+      ch.extraImgs.forEach(ex=>{if((ex.group||'')===oldG)ex.group=newG;});
+      renderT3(ch);saveAll();
+    });
+  });
+
+  // 그룹 삭제 (이미지는 기본 그룹으로 이동)
+  el.querySelectorAll('.del-group-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(!confirm(`"${btn.dataset.g}" 그룹을 삭제하시겠습니까?\n이미지는 기본 그룹으로 이동됩니다.`))return;
+      ch.extraImgs.forEach(ex=>{if((ex.group||'')===btn.dataset.g)ex.group='';});
+      renderT3(ch);saveAll();
+    });
+  });
+
+  // 그룹 접기/펼치기
+  el.querySelectorAll('.img-group-arrow').forEach(arrow=>{
+    arrow.addEventListener('click',()=>{
+      const body=document.getElementById(arrow.dataset.gid);
+      if(!body)return;
+      const collapsed=body.style.display==='none';
+      body.style.display=collapsed?'':'none';
+      arrow.textContent=collapsed?'▼':'▶';
+    });
+    arrow.textContent='▼'; // 기본 펼침
+  });
 }
+
 
 // ── TAB 4 ──
 function renderT4(ch){
@@ -1016,15 +1486,33 @@ function setupDrop(el,key){
     const files=[...e.dataTransfer.files].filter(f=>f.type.startsWith('image/'));
     if(!files.length)return;
     if(key==='__extra__'){files.forEach(f=>readImgFile(f,'__extra__'));}
-    else{readImgFile(files[0],key);}
+    else{
+      const ch=getA();
+      if(ch&&ch[key]&&!confirm('이미 이미지가 있습니다. 덮어쓰시겠습니까?'))return;
+      readImgFile(files[0],key);
+      for(let i=1;i<files.length;i++)readImgFile(files[i],'__extra__');
+    }
   });
 }
-function readImgFile(file,key){
+function setupDropGroup(el, g){
+  if(!el) return;
+  el.addEventListener('dragover', e=>{
+    if(e.dataTransfer.types.includes('Files')){ e.preventDefault(); el.classList.add('dropover'); }
+  });
+  el.addEventListener('dragleave', ()=>el.classList.remove('dropover'));
+  el.addEventListener('drop', e=>{
+    e.preventDefault(); el.classList.remove('dropover');
+    const files=[...e.dataTransfer.files].filter(f=>f.type.startsWith('image/'));
+    if(!files.length) return;
+    files.forEach(f=>readImgFile(f,'__extra__', g));
+  });
+}
+function readImgFile(file,key,group){
   const ch=getA();if(!ch)return;
   const r=new FileReader();
   r.onload=e=>{
     const src=e.target.result;
-    if(key==='__extra__'){ch.extraImgs.push({src,label:''});}
+    if(key==='__extra__'){ch.extraImgs.push({src,label:'',group:group||pendingGroup||''});}
     else{ch[key]=src;}
     if(curTab==='t1')renderT1L(ch);
     else if(curTab==='t3')renderT3(ch);
@@ -1170,6 +1658,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('importFile').addEventListener('change',e=>{const f=e.target.files[0];if(f)doImport(f);e.target.value='';});
 
   document.getElementById('btnDel').addEventListener('click',()=>{const ch=getA();if(ch)deleteChar(ch.id);});
+  // 이미지 그룹 모달
+  document.getElementById('groupCancel').addEventListener('click',()=>document.getElementById('moGroup').classList.remove('open'));
+  document.getElementById('moGroup').addEventListener('click',e=>{if(e.target===e.currentTarget)document.getElementById('moGroup').classList.remove('open');});
+  document.getElementById('groupConfirm').addEventListener('click',()=>{
+    const name=document.getElementById('groupNameInp').value.trim();
+    if(!name){showToast('그룹 이름을 입력하세요','err');return;}
+    // 그룹은 이미지 추가 시 자동 생성되므로 pendingGroup 세팅 후 업로드 트리거
+    pendingGroup=name;
+    document.getElementById('moGroup').classList.remove('open');
+    triggerUpload('__extra__');
+    showToast('그룹 "'+name+'" 추가 후 이미지를 선택하세요','ok');
+  });
 
   document.getElementById('ctabsBar').addEventListener('click',e=>{
     const tab=e.target.closest('.ctab');if(tab&&tab.dataset.ct)switchCTab(tab.dataset.ct);
@@ -1181,12 +1681,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(!files.length)return;
     const key=pendingKey||'__extra__';
     if(key==='__extra__'){
-      // 추가 이미지: 모두 extra에
       files.forEach(f=>readImgFile(f,'__extra__'));
     } else {
-      // 슬롯 업로드: 첫 장은 해당 슬롯, 나머지는 extra에 추가
-      readImgFile(files[0], key);
-      for(let i=1;i<files.length;i++) readImgFile(files[i],'__extra__');
+      const ch=getA();
+      if(ch&&ch[key]&&!confirm('이미 이미지가 있습니다. 덮어쓰시겠습니까?')){
+        e.target.value='';
+        document.getElementById('imgInput').removeAttribute('multiple');
+        return;
+      }
+      readImgFile(files[0],key);
+      for(let i=1;i<files.length;i++)readImgFile(files[i],'__extra__');
     }
     e.target.value='';
     document.getElementById('imgInput').removeAttribute('multiple');
@@ -1199,6 +1703,17 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(e.key==='Escape'){document.querySelectorAll('.mo.open').forEach(m=>m.classList.remove('open'));closeLB();}
     if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();doExport();}
   });
+
+  // ── 클라우드 버튼 이벤트 ──
+  document.getElementById('btnCloudLogin')?.addEventListener('click', cloudLogin);
+  document.getElementById('btnCloudSave')?.addEventListener('click', cloudSave);
+  document.getElementById('btnCloudLoad')?.addEventListener('click', openCloudLoad);
+  document.getElementById('btnCloudLogout')?.addEventListener('click', cloudLogout);
+  document.getElementById('cloudLoadCancel')?.addEventListener('click', ()=>document.getElementById('moCloudLoad').classList.remove('open'));
+  document.getElementById('moCloudLoad')?.addEventListener('click', e=>{ if(e.target===e.currentTarget) document.getElementById('moCloudLoad').classList.remove('open'); });
+
+  // Supabase 초기화 (로드 실패해도 앱 정상 동작)
+  initSupabase();
 
   loadAll();
   if(chars.length&&!activeId)activeId=chars[0].id;
