@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>캐릭터 아카이브</title>
+<title>자캐 아카이브</title>
 <style>
 :root{
   --bg:#0f0e17;--bg2:#171524;--panel:#1e1b2e;--panel2:#252240;--panel3:#2c2847;
@@ -439,7 +439,7 @@ input[type=file]{display:none;}
 <body>
 
 <header>
-  <div class="logo">✦ 캐릭터 아카이브<em>OC Archive</em></div>
+  <div class="logo">✦ 자캐 아카이브<em>OC Archive</em></div>
   <div class="hact">
     <button class="btn" id="btnNew">
       <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>새 캐릭터
@@ -454,21 +454,21 @@ input[type=file]{display:none;}
     <button class="btn pri" id="btnExport">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>JSON 저장
     </button>
-    <!-- 클라우드 영역 (로그인 시에만 활성) -->
+    <!-- 클라우드 영역 (로그인 후에만 활성) -->
     <div class="hact-divider"></div>
-    <button class="btn cloud-btn" id="btnCloudLogin" title="Google 로그인으로 클라우드 저장 사용">
-      <svg viewBox="0 0 24 24"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><polyline points="16 21 12 17 8 21"/><line x1="12" y1="17" x2="12" y2="11"/></svg>클라우드
+    <button class="btn cloud-btn" id="btnCloudLogin" title="Google 계정으로 로그인">
+      <svg viewBox="0 0 24 24"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><polyline points="16 21 12 17 8 21"/><line x1="12" y1="17" x2="12" y2="11"/></svg>☁ 로그인
     </button>
-    <div id="cloudUserArea" style="display:none;align-items:center;gap:6px">
-      <img id="cloudAvatar" src="" alt="" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--bd2)">
+    <div id="cloudUserArea" style="display:none;align-items:center;gap:5px">
+      <img id="cloudAvatar" src="" alt="" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--bd2);display:none">
       <span id="cloudUserName" style="font-size:11px;color:var(--t2);max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
-      <button class="btn sm" id="btnCloudSave" title="클라우드에 저장">
+      <button class="btn cloud-btn sm" id="btnCloudSave" title="클라우드에 저장">
         <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>저장
       </button>
-      <button class="btn sm" id="btnCloudLoad" title="클라우드에서 불러오기">
+      <button class="btn cloud-btn sm" id="btnCloudLoad" title="클라우드에서 불러오기">
         <svg viewBox="0 0 24 24"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><polyline points="8 17 12 21 16 17"/><line x1="12" y1="21" x2="12" y2="11"/></svg>불러오기
       </button>
-      <button class="btn sm" id="btnCloudLogout" title="로그아웃">
+      <button class="btn sm" id="btnCloudLogout" title="로그아웃" style="padding:5px 7px">
         <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
       </button>
     </div>
@@ -590,7 +590,7 @@ input[type=file]{display:none;}
 // ★ 아래 두 값을 본인 Supabase 프로젝트 값으로 교체하세요
 // ═══════════════════════════════════════════
 const SUPA_URL  = 'https://iuniclusrifcgkeglrzc.supabase.co';   // ← 교체
-const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1bmljbHVzcmlmY2drZWdscnpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNTI1NjgsImV4cCI6MjA5NjkyODU2OH0.p0wF3YoHSOdEdi1IxR6-DA5PzSSjed8PBnVMO0i_Pp0';
+const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1bmljbHVzcmlmY2drZWdscnpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNTI1NjgsImV4cCI6MjA5NjkyODU2OH0.p0wF3YoHSOdEdi1IxR6-DA5PzSSjed8PBnVMO0i_Pp0';                       // ← 교체
 const MAX_CLOUD_SAVES = 3;
 
 let supa = null;       // Supabase client (로드 실패 시 null)
@@ -620,17 +620,17 @@ function initSupabase() {
 }
 
 function updateCloudUI() {
-  const loginBtn  = document.getElementById('btnCloudLogin');
-  const userArea  = document.getElementById('cloudUserArea');
-  const avatar    = document.getElementById('cloudAvatar');
-  const nameEl    = document.getElementById('cloudUserName');
+  const loginBtn = document.getElementById('btnCloudLogin');
+  const userArea = document.getElementById('cloudUserArea');
+  const avatar   = document.getElementById('cloudAvatar');
+  const nameEl   = document.getElementById('cloudUserName');
   if (!loginBtn || !userArea) return;
 
   if (cloudUser) {
     loginBtn.style.display = 'none';
     userArea.style.display = 'flex';
     const meta = cloudUser.user_metadata || {};
-    avatar.src   = meta.avatar_url || '';
+    avatar.src = meta.avatar_url || '';
     avatar.style.display = meta.avatar_url ? '' : 'none';
     nameEl.textContent = meta.full_name || meta.name || cloudUser.email || '';
   } else {
@@ -654,7 +654,7 @@ async function cloudLogout() {
 }
 
 async function cloudSave() {
-  if (!supa || !cloudUser) { showToast('먼저 로그인하세요','err'); return; }
+  if (!supa || !cloudUser) { showToast('먼저 Google 로그인을 해주세요','err'); return; }
   if (!chars.length) { showToast('저장할 캐릭터가 없습니다','err'); return; }
 
   const saveName = `저장 ${new Date().toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}`;
@@ -672,18 +672,31 @@ async function cloudSave() {
   }
 
   const payload = { version:4, chars, folders };
-  const { error } = await supa.from('saves').insert({
-    user_id: cloudUser.id,
-    name: saveName,
-    data: payload
-  });
 
-  if (error) { showToast('저장 실패: ' + error.message,'err'); return; }
+  // user_id는 RLS 정책으로 auth.uid()가 자동 세팅됨
+  // (테이블 DEFAULT: auth.uid(), WITH CHECK: auth.uid() = user_id)
+  const { data: insertData, error } = await supa
+    .from('saves')
+    .insert({ name: saveName, data: payload })
+    .select();
+
+  if (error) {
+    console.error('Cloud save error:', error);
+    // user_id 컬럼에 직접 넣는 방식으로 fallback
+    const { error: error2 } = await supa
+      .from('saves')
+      .insert({ user_id: cloudUser.id, name: saveName, data: payload });
+    if (error2) {
+      console.error('Cloud save fallback error:', error2);
+      showToast('저장 실패: ' + (error2.message || error.message), 'err');
+      return;
+    }
+  }
   showToast('☁ 클라우드 저장 완료 ✦','ok');
 }
 
 async function openCloudLoad() {
-  if (!supa || !cloudUser) { showToast('먼저 로그인하세요','err'); return; }
+  if (!supa || !cloudUser) { showToast('먼저 Google 로그인을 해주세요','err'); return; }
   document.getElementById('moCloudLoad').classList.add('open');
   renderCloudSaveList();
 }
@@ -805,6 +818,7 @@ const SF=[
 // ═══════════════════════════════════════════
 let chars=[], folders=[], activeId=null, curView='editor', curTab='t1';
 let pendingKey=null, pendingRelImg=false, pendingGroup='';
+const groupOpenState=new Map(); // 그룹 접힘 상태 유지
 let icDragSrc=null, sbDragId=null;
 let relAddTab='registered'; // 'registered' | 'external'
 
@@ -1278,16 +1292,23 @@ function renderT3(ch){
     });
   });
 
-  // 그룹 접기/펼치기
+  // 그룹 접기/펼치기 (상태 기억)
   el.querySelectorAll('.img-group-arrow').forEach(arrow=>{
+    const gid=arrow.dataset.gid;
+    const body=document.getElementById(gid);
+    // 저장된 상태 복원 (기본: 펼침)
+    const isOpen = groupOpenState.has(gid) ? groupOpenState.get(gid) : true;
+    if(body) body.style.display = isOpen ? '' : 'none';
+    arrow.textContent = isOpen ? '▼' : '▶';
+
     arrow.addEventListener('click',()=>{
-      const body=document.getElementById(arrow.dataset.gid);
-      if(!body)return;
-      const collapsed=body.style.display==='none';
-      body.style.display=collapsed?'':'none';
-      arrow.textContent=collapsed?'▼':'▶';
+      const b=document.getElementById(arrow.dataset.gid);
+      if(!b)return;
+      const nowOpen=b.style.display!=='none';
+      b.style.display=nowOpen?'none':'';
+      arrow.textContent=nowOpen?'▶':'▼';
+      groupOpenState.set(arrow.dataset.gid, !nowOpen);
     });
-    arrow.textContent='▼'; // 기본 펼침
   });
 }
 
